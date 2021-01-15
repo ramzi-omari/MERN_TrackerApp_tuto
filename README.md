@@ -41,14 +41,14 @@ app.listen(port, () => {
 }); // start listening on the server Port
 ```
 
-    - nodemon server     // in terminal to start the server
-    - connect toward our database a MongoDB Atlas by adding
+- nodemon server // in terminal to start the server
+- connect toward our database a MongoDB Atlas by adding
 
 ```js
 const mongoose = require("mongoose");
 ```
 
-    - before add.listen we add :
+- before add.listen we add :
 
 ```js
 const uri = process.env.ATLAS_URI; // uri where our db is stored (we get it from atlas dashboard)
@@ -60,7 +60,10 @@ connection.once("open", () => {
 });
 ```
 
-    - create **.env** and write inside uri from:
-    > MongoDB atlas Cluster >> Connect your application >> connection string AND change Password
+- create **.env** and write inside URI from:
+  > MongoDB atlas Cluster >> Connect your application >> connection string AND change Password:  
+  >  `ATLAS_URI = mongodb+srv://ramzi-omari:<password>@cluster0.bdqgw.mongodb.net/<dbname>?retryWrites=true&w=majority`
 
-now the application is connected to MongoDB
+**now the application is connected to MongoDB**
+
+### create DB Schema
