@@ -14,11 +14,22 @@ app.use(cors()); // cors middleware
 app.use(express.json()); // to allow us to parse json (sent from the server)
 
 const uri = process.env.ATLAS_URI; // uri where our db is stored (we get it from atlas dashboard)
-mongoose.connect(uri, { userNewUrlParser: true, useCreateIndex: true });
+
+mongoose.connect(uri, {
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
+
+const exercisesRouter = require("./routes/exercises");
+const usersRouter = require("./routes/users");
+
+app.use("/exercises", exercisesRouter);
+app.use("/users", usersRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

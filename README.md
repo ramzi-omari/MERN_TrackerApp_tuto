@@ -67,3 +67,29 @@ connection.once("open", () => {
 **now the application is connected to MongoDB**
 
 ### create DB Schema
+
+we add the following header and then our Data schema
+
+```js
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+```
+
+### Endpoint Routes
+
+so the server can perform crud operations
+
+- we create routes folder (users.js & exercises.js)
+
+- in **server.js** before app.listen we require file & use them :
+
+  ```js
+  const exercisesRouter = require("./routes/exercises");
+  const usersRouter = require("./routes/users");
+
+  app.use("/exercises", exercisesRouter);
+  app.use("/users", usersRouter);
+  ```
+
+- we configure our routes user & exercises (configuration & for exercises we add all CRUD operations)
